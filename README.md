@@ -87,8 +87,13 @@ For local work, serve `web/` on port 8788 (it's in the Worker's default `ALLOWED
 - Weekly availability matrix, with a team view for officers
 - Assign players directly to raid slots
 - Optional mandatory linked accounts per guild
-- WhatsApp raid reminders / RSVP bot; Discord integration
+- A stable integration surface: guild API tokens, a read API for rosters and raids, and webhooks for events (raid created, signup, accepted/declined), so bots and addons can be built without touching the core
+- Reference integrations (Discord, WhatsApp) as separate programs
+
+## Contributing
+
+Contributions are welcome, see [`CONTRIBUTING.md`](CONTRIBUTING.md). Discord bots, WhatsApp bots and in-game addons are meant to be built as separate programs on top of the API, so anyone can make their own.
 
 ## License
 
-No license has been chosen yet, so all rights are reserved by default.
+[Apache-2.0](LICENSE).
