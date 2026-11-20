@@ -1,0 +1,32 @@
+name = "nostalgia-api"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+# Public config. Secrets go in via `wrangler secret put` — never here.
+[vars]
+APP_URL               = "https://nostalgia.duzgunoyun.com"
+ALLOWED_ORIGINS       = "https://nostalgia.duzgunoyun.com,http://localhost:8788"
+
+# Must cover BOTH the frontend and the API host so the session cookie reaches
+# each of them. They're sibling subdomains, so the shared parent is the only
+# value that works.
+COOKIE_DOMAIN         = "duzgunoyun.com"
+
+GOOGLE_CLIENT_ID      = "REPLACE_WITH_GOOGLE_CLIENT_ID"
+GOOGLE_REDIRECT_URI   = "https://nostalgia-api.duzgunoyun.com/api/auth/google/callback"
+
+# Account linking, not sign-in. Google remains the only way to authenticate;
+# these prove "this Discord user / these WoW characters are mine".
+DISCORD_CLIENT_ID     = "REPLACE_WITH_DISCORD_CLIENT_ID"
+DISCORD_REDIRECT_URI  = "https://nostalgia-api.duzgunoyun.com/api/auth/discord/callback"
+
+BATTLENET_CLIENT_ID    = "REPLACE_WITH_BATTLENET_CLIENT_ID"
+BATTLENET_REDIRECT_URI = "https://nostalgia-api.duzgunoyun.com/api/auth/battlenet/callback"
+# Blizzard's OAuth host is regional; EU accounts authorise against eu.
+BATTLENET_REGION       = "eu"
+
+# Create with:  wrangler kv namespace create NOSTALGIA_STATE
+# then paste the printed id below.
+[[kv_namespaces]]
+binding = "NOSTALGIA_STATE"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
